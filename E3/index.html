@@ -8,10 +8,41 @@
     </head>
     <body>
         <h1> Análisis sobre rendimientos académicos escolares </h1>
+        <p>En esta entrega se analizará de qué manera afectan diferentes factores de un alumno escolar en su promedio final. 
+            Las características que se tendrán en consideración en este caso serán si la comuna de residencia del alumno es la misma del establecimiento, la dependencia educacional,
+            si se encuentra en un espacio rural o urbano, el sexo del estudiante y la jornada del establecimiento. Además, esto será evaluado en torno a la asistencia que presenta 
+            el alumno durante el año. Es importante analizar lo mencionado ya que, en caso de que se viera alguna correlación entre aquellos factores, sería una variable que los 
+            padres podrían considerar al momento de matricular a sus hijos en el establecimiento educativo. </p>
+        <p>En la entrega anterior faltó complejizar el problema para aplicar mejor la materia del curso y así obtener información a partir de 
+            modelos que podríamos haber desarrollado. Por esta razón, en esta entrega se busca obtener una mirada más integral de las variables que afectan las calificaciones de 
+            un estudiante, por lo que se utilizarán más variables que pueden tener incidencia en el promedio final de un alumno (mencionadas en el primer párrafo). </p>
+        <p>Para esta entrega utilizamos datos abiertos provenientes del Centro de Estudios Mineduc y los filtramos para quedarnos con los datos que 
+            nos interesan para el proyecto (mencionados anteriormente). Luego, hicimos un modelo de regresión lineal que permite predecir el promedio a partir de los datos que se mencionaron. 
+            La idea de estos cambios es contemplar distintos factores que afectan el rendimiento académico, que antes no tomábamos en cuenta, más allá de sólo la comuna de residencia, 
+            obteniendo un resultado y una lectura más realista del problema en cuestión.</p>
+        <p>A continuación se presenta un gráfico de asistencia vs promedio general de un alumno, en el que se pueden seleccionar los datos que a uno 
+            le gustaría analizar. A partir de la opción escogida, se mostrará el resultado de la regresión, en donde cada punto representa a un alumno y cada color las opciones existentes 
+            del el filtro escogido. </p>
+        <br>
+
+        <h3>Gráfico</h3>
         <div id="tool-container">
             <div id="graph-container"></div>
             <div id="buttons-container"></div>
         </div>
+        <br>
+        <h3>Predecir el promedio final</h3>
+        <p>A continuación se podrá seleccionar una opción de cada factor a considerar y se predicirá, a partir del modelo entrenado, el promedio final de un 
+            hipotético alumno con las características mencionadas.</p>
+        <div class="contenedor-row">
+            <div id="form-container"></div>
+            <div id="form-button"></div>
+        </div>
+        <br>
+        <!-- <div class="contenedor-row"> -->
+        <h4 class="prom"> Promedio final: </h4>
+        <!-- </div> -->
+
 
         <script src="script.js"></script>
     </body>

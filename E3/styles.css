@@ -1,3 +1,23 @@
 div#graph-container {
     display: flex;
+    margin: auto;
+}
+
+body {
+    font-family: 'roboto', sans-serif;
+    width: 90%;
+    margin: auto;
+    background-color:ivory;
+}
+
+p.prom {
+    font-weight: bold;
+}
+
+p{
+    text-align: justify;
+}
+
+h1{
+    text-align: center;
 }

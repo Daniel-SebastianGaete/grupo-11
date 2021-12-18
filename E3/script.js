@@ -8,7 +8,7 @@ const margin = {
 }
 
 const
-    WIDTH = 1000,
+    WIDTH = 800,
     HEIGHT = 500;
 
 const width = WIDTH - margin.left - margin.right,
@@ -166,7 +166,7 @@ const display = (data) => {
                     .attr('cy', (d) => yScale(d.PROM_GRAL))
                     .transition()
                     .duration(2000)
-                    .attr('r', 7);   
+                    .attr('r', 4);   
             },
             (update) => {
                 update
@@ -186,7 +186,6 @@ const displayInfo = () => {
         .scaleLinear()
         .domain([d3.min(keys), 6])
         .range([0, height / 2]);
-    console.log(keys);
     
     infoContainer
         .selectAll('circle')
@@ -238,6 +237,21 @@ const displayInfo = () => {
             }
         )
 }
+
+// CALCULAR PROMEDIO
+for (let i = 0; i < filterVars.length; i++) {
+    const selectOption = d3.select('#form-container')
+        .append('select').attr('id', 'select')
+        .selectAll("option")
+        .data(Object.entries(filterVars[i].dict))
+        .enter()
+        .append("option")
+        .attr("value", (d) => d[0])
+        .text((d) => d[1]);
+}
+
+const attendanceOption = d3.select('#form-container')
+        .append("input");
 
 d3.json(path)
     .then((data) => {
