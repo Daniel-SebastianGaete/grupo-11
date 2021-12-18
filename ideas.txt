@@ -1,0 +1,9 @@
+regresión lineal
+lasso
+knn
+árboles de decisión
+random forest
+dbscan
+gmm
+pca
+autoencoders
