@@ -1,6 +1,7 @@
 # Grupo 11
 
 Esta entrega corresponde a una visualización interactiva que se encuentrta en formato html. 
+Esta visualización presenta una muestra de los datos presentes en el csv, ya que éstos son muchos y la entrega era muy pesada.
 
 Para acceder a ella, se debe clonar el repositorio con el siguiente comando en la terminal de git: 
 
