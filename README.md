@@ -1,7 +1,7 @@
 # Grupo 11
 
 Esta entrega corresponde a una visualización interactiva que se encuentrta en formato html. 
-Esta visualización presenta una muestra de los datos presentes en el csv, ya que éstos son muchos y la entrega era muy pesada.
+Esta visualización presenta una muestra de los datos presentes en el csv, ya que éstos son muchos y la entrega era muy pesada. Los datos completos se encuentran en el archivo .zip y fueron los que se utilizaron en el procesamiento de datos, lo que se encuentra en el archivo .ipynb.
 
 Para acceder a ella, se debe clonar el repositorio con el siguiente comando en la terminal de git: 
 
