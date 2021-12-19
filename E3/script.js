@@ -1,3 +1,28 @@
+function valToArr(value, dict) {
+    let entries = Object.entries(dict);
+    entries = entries.filter((d) => d[1] !== 'Sin info');
+    const min = d3.min(entries, (d) => d[0]);
+    const arr = new Array(entries.length).fill(0);
+    if (min[0] == 0) {
+        arr[value] = 1;
+    } else if (min[0] == 1) {
+        arr[value - 1] = 1;
+    } else {
+        console.log('ERROR');
+    }
+    return arr;
+}
+
+let rCoef = [];
+let rConst = 0;
+d3.json('regr.json')
+    .then((data) => {
+        rCoef = data.Coef;
+        rConst = data.Beta;
+    })
+    .catch((err) => console.log(err));
+
+
 const path = 'data.json';
 
 const margin = {
@@ -93,7 +118,7 @@ const options = selectButton
 
 const info = d3.select('#graph-container')
     .append('svg')
-    .attr('width', WIDTH / 3)
+    .attr('width', WIDTH / 2)
     .attr('height', HEIGHT);
 
 const infoContainer = info.append('g');
@@ -241,7 +266,7 @@ const displayInfo = () => {
 // CALCULAR PROMEDIO
 for (let i = 0; i < filterVars.length; i++) {
     const selectOption = d3.select('#form-container')
-        .append('select').attr('id', 'select')
+        .append('select').attr('id', `${filterVars[i].name}`)
         .selectAll("option")
         .data(Object.entries(filterVars[i].dict))
         .enter()
@@ -251,7 +276,36 @@ for (let i = 0; i < filterVars.length; i++) {
 }
 
 const attendanceOption = d3.select('#form-container')
-        .append("input");
+    .append('input')
+    .attr('type', 'range')
+    .attr('id', 'attendance-option')
+    .attr('min', 0)
+    .attr('max', 100);
+
+const formButton = d3.select('#form-button')
+    .append('button')
+    .text('Enviar')
+    .on('click', () => {
+        const dep = d3.select(`#${filterVars[0].name}`).property('value');
+        const rur = d3.select(`#${filterVars[1].name}`).property('value');
+        const gen = d3.select(`#${filterVars[2].name}`).property('value');
+        const jor = d3.select(`#${filterVars[3].name}`).property('value');
+        const com = d3.select(`#${filterVars[4].name}`).property('value');
+        const asis = d3.select('#attendance-option').property('value');
+
+        const arrDep = valToArr(dep, filterVars[0].dict);
+        const arrJor = valToArr(jor, filterVars[3].dict);
+
+        const arr = [rur].concat([asis], [gen], [com], arrDep, arrJor);
+
+        let prom = 0;
+        for (let i = 0; i < arr.length; i++) {
+            prom += arr[i] * rCoef[i];
+        }
+        prom += rConst;
+
+        d3.select('#prom').text(`Promedio final: ${prom}`);
+    });
 
 d3.json(path)
     .then((data) => {
